@@ -5,10 +5,13 @@ import React from 'react';
 // }
 
 //деструктуризация:
-const TodoListItem = () => {
+const TodoListItem = ({ label, important = false }) => {
 
-    
-    return  <span>Drink coffee</span>;
+    const styleItem = {
+        color: important ? 'tomato' : 'black'
+    };
+
+    return  <span style={styleItem}>{ label }</span>;
 }
 
 

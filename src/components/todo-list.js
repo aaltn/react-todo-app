@@ -8,17 +8,20 @@ const TodoList = () => {
     //        <li>{ items[0] }</li>
     //        <li>{ items[1] }</li>}
 
-    
+    //         important={true} /></li>
+
     return (
         <ul>
             <li>
-                <TodoListItem />
+                <TodoListItem label="Drink coffee" />
             </li>
             <li>
-                <TodoListItem />
+                <TodoListItem 
+                    label="Build React App" 
+                    important />
             </li>
             <li>
-                <TodoListItem />
+                <TodoListItem label="give to the world my Todo App" />
             </li>
         </ul>
     );

@@ -2,27 +2,33 @@ import React from 'react';
 
 import TodoListItem from './todo-list-item';
 
-const TodoList = () => {
+const TodoList = ({ todos }) => {
 
-    // const items = ['Learn React' , 'Build Awesome App'];
-    //        <li>{ items[0] }</li>
-    //        <li>{ items[1] }</li>}
+    // const elements = todos.map((item) => {
+    //     return (
+    //         <li>
+    //             <TodoListItem 
+    //                 label={item.label}
+    //                 important={item.important}
+    //             />
+    //         </li>
+    //     );
+    // });
 
-    //         important={true} /></li>
+    //или тоже самое используя Spread-оператор для объекта чтобы передать 
+    // каждое свойство объекта внутрь компонета:
+    const elements = todos.map((item) => {
+        return (
+            <li>
+                <TodoListItem { ...item } />
+            </li>
+        );
+    });    
+
 
     return (
         <ul>
-            <li>
-                <TodoListItem label="Drink coffee" />
-            </li>
-            <li>
-                <TodoListItem 
-                    label="Build React App" 
-                    important />
-            </li>
-            <li>
-                <TodoListItem label="give to the world my Todo App" />
-            </li>
+            { elements }
         </ul>
     );
 };

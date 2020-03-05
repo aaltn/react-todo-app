@@ -1,4 +1,9 @@
 .btn-group button {
     
-    margin: 0px 3px;
+    margin: 0 3px 0 0;
+}
+
+.btn-group button:last-child {
+    
+    margin: 0;
 }

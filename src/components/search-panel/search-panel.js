@@ -3,7 +3,7 @@ import './search-panel.css';
 
 const SearchPanel = () => {
 
-    const searchText = 'type here to search'
+    const searchText = 'type to search'
     //пример подключения инлайн-стилей:
     // const styleSearchPanel = {
     //     fontSize: '20px',

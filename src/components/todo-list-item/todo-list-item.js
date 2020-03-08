@@ -5,7 +5,20 @@ import './todo-list-item.css';
 // чтобы хранить состояние компонента - заменим функцию на класс:
 
 // export default class TodoListItem extends React.Component {
-export default class TodoListItem extends Component {    
+export default class TodoListItem extends Component {   
+    
+    // constructor() {
+    //     super();
+        
+    //     this.onLabelClick = () => {
+    //         console.log(`click on : ${ this.props.label }`);
+    //     };
+    // }
+
+    onLabelClick = () => {
+        console.log(`click on : ${ this.props.label }`);
+    };
+
 
     render() {
         const { label, important = false, done = false } = this.props;
@@ -33,7 +46,7 @@ export default class TodoListItem extends Component {
                 <span
                     className="todo-list-item-label"
                     style={styleItem}
-                    onClick={ ()=> console.log(`click on : ${label}`) }
+                    onClick={ this.onLabelClick  }
                 >
                     { label }
                 </span> 

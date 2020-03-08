@@ -10,7 +10,7 @@ import './app.css';
 const App = () => {
 
     const todoData = [
-        { label: 'Drink Coffee', important: false, done: true, id: 1 },
+        { label: 'Drink Coffee', important: false, id: 1 },
         { label: 'Learn React', important: false, id: 2 },
         { label: 'Build Awesome React App', important: false, id: 3 },
         { label: 'Give to the world my \'Todo\u00A0App\'', important: true, id: 4 }

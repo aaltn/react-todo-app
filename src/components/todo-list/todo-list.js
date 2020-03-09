@@ -3,8 +3,8 @@ import React from 'react';
 import TodoListItem from '../todo-list-item';
 import './todo-list.css';
 
-const TodoList = ({ todos }) => {
-
+const TodoList = ({ todos, onDeleted }) => {
+    {
     // const elements = todos.map((item) => {
     //     return (
     //         <li>
@@ -25,7 +25,7 @@ const TodoList = ({ todos }) => {
     //         </li>
     //     );
     // });    
-
+    }
     const elements = todos.map((item) => {
 
         //каждому JSX элементу в массиве нужно уникальное свойство key
@@ -34,7 +34,10 @@ const TodoList = ({ todos }) => {
 
         return (
             <li key={id}  className="list-group-item">
-                <TodoListItem { ...itemProps } />
+                <TodoListItem 
+                    { ...itemProps }
+                    onDeleted={() => onDeleted(id)}
+                />
             </li>
         );
     });    

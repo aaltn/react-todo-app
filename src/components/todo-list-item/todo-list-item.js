@@ -5,29 +5,23 @@ import './todo-list-item.css';
 
 export default class TodoListItem extends Component {   
     
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         done: false;
-    // };
-    //     this.onLabelClick = () => {
-    //         console.log(`click on : ${ this.props.label }`);
-    //     };
-    // }
     state = { 
         done: false,
         important: false
     };
     onLabelClick = () => {
-        // console.log(`click on : ${ this.props.label }`);
-        this.setState({
-            done: true
+        this.setState((state) => {
+            return {
+                done: !state.done
+            };
         });
     };
 
     onMarkImportant = () => {
-        this.setState({
-            important: true
+        this.setState((state) => {
+            return {
+                important: !state.important
+            };
         });
     };
 
@@ -49,12 +43,14 @@ export default class TodoListItem extends Component {
                 <span className="float-right">                
                     <button className="btn btn-outline-danger btn-sm"
                         type="button"
-                        onClick={ this.onMarkImportant }
+                        title="mark Done" 
+                        onClick={ this.onLabelClick }
                     >
                         <i className="fa fa-trash-o"></i>
                     </button>
                     <button className="btn btn-outline-success btn-sm"
                         type="button"
+                        title="mark Important"
                         onClick={ this.onMarkImportant }
                     >
                         <i className="fa fa-exclamation"></i>
@@ -63,7 +59,7 @@ export default class TodoListItem extends Component {
     
                 <span
                     className="todo-list-item-label"
-                    titel="mark done"                  
+                    title="mark done"                  
                     onClick={ this.onLabelClick  }
                 >
                     { label }

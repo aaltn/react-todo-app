@@ -62,7 +62,8 @@ export default class TodoListItem extends Component {
                 </span>
     
                 <span
-                    className="todo-list-item-label"                    
+                    className="todo-list-item-label"
+                    titel="mark done"                  
                     onClick={ this.onLabelClick  }
                 >
                     { label }

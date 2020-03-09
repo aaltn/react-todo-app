@@ -19,8 +19,23 @@ export default class App extends Component {
     };
 
     deleteItem = (id) => {
-        console.log(id);
-    }
+        this.setState(({ todoData }) => {
+            const idx = todoData.findIndex((el) => el.id === id);
+            //todoData.splice(idx, 1); - нельзя изменять существующий State
+
+            // [a, b, c, d, e]
+            // [a, b,    d, e]
+            const before = todoData.slice(0, idx);
+            const after = todoData.slice(idx + 1);
+
+            const newArray = [...before, ...after];
+
+
+            return {
+                todoData: newArray
+            };
+        });
+    };
 
     render() {
         return (
@@ -38,6 +53,6 @@ export default class App extends Component {
             </div>
         );
 
-    }
+    };
     
 };

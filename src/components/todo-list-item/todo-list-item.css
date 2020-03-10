@@ -6,6 +6,8 @@
 .todo-list-item-label {
     /* @media    -     font-size: 1.25rem; */
     font-size: 1.1rem;
+    display: inline-block;
+    width: 75%;
 }
 
 .todo-list-item button {

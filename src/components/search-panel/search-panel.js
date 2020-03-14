@@ -1,23 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './search-panel.css';
 
-const SearchPanel = () => {
+export default class SearchPanel extends Component {
 
-    const searchText = 'type to search';
-    //пример подключения инлайн-стилей:
-    // const styleSearchPanel = {
-    //     fontSize: '20px',
-    //     fontStyle: 'italic'     
-    // };
-    // return <input 
-    //     style={styleSearchPanel}
-    //     placeholder={searchText}
-    //     disabled={false}
-    //     type="text" />;
+    state = {
+        searchLine: ''
+    }
 
-    return <input className="form-control  search-input"
-        placeholder={searchText} 
-        type="text" />;    
-};
+    onSearchChange = (e) => {
+        const searchLine = e.target.value;
+        this.setState({ searchLine });
+        this.props.onSearchChange(searchLine);
+    };
 
-export default SearchPanel;
+    render () {
+        const searchText = 'type to search';
+        //пример подключения инлайн-стилей:
+        // const styleSearchPanel = {
+        //     fontSize: '20px',
+        //     fontStyle: 'italic'     
+        // };
+        // return <input 
+        //     style={styleSearchPanel}
+        //     placeholder={searchText}
+        //     disabled={false}
+        //     type="text" />;
+        return (
+            <input className="form-control  search-input"
+                placeholder={searchText} 
+                type="text" 
+                value={this.state.searchLine}
+                onChange={this.onSearchChange}    
+            /> 
+        );
+
+    } 
+}

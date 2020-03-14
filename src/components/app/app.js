@@ -19,7 +19,8 @@ export default class App extends Component {
             this.createTodoItem('Build Awesome React App'),
             this.createTodoItem('Give to the world my \'Todo\u00A0App\'')
         ],
-        searchLine: ''
+        searchLine: '',
+        filter: 'all' // active, done, all
     };
 
     createTodoItem(label) {
@@ -113,6 +114,10 @@ export default class App extends Component {
         this.setState({ searchLine });
     };
 
+    onFilterChange = (filter) => {
+        this.setState({ filter });
+    };
+
     search(items, searchLine) {
         if (searchLine.length === 0) {
             return items;
@@ -123,11 +128,27 @@ export default class App extends Component {
         });
     };
 
+    filterList(items, filter) {
+
+        switch(filter) {
+            case 'all': 
+                return items;
+            case 'done':
+                return items.filter((item) => item.done);
+            case 'active':
+                return items.filter((item) => !item.done);
+            default:
+                return items;
+        }
+    }
+
     render() {
 
-        const { todoData, searchLine } = this.state;
+        const { todoData, searchLine, filter } = this.state;
 
-        const visebleItems = this.search(todoData, searchLine);
+        const visebleItems = this.filterList(
+            this.search(todoData, searchLine), filter);
+
         const doneCount = this.state.todoData.filter((el) => el.done).length;
         const todoCount = this.state.todoData.length - doneCount;
 
@@ -138,7 +159,10 @@ export default class App extends Component {
                     <SearchPanel 
                         onSearchChange={this.onSearchChange}
                     /> 
-                    <ItemStatusFilter />
+                    <ItemStatusFilter 
+                        filter={filter}
+                        onFilterChange={this.onFilterChange}
+                    />
                 </div>  
     
                 <TodoList 
